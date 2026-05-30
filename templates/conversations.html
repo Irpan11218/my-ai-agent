@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Percakapan</title>
+  </head>
+  <body>
+    <h1>Percakapan Terakhir</h1>
+    <a href="/">Kembali</a>
+    <ul>
+      {% for c in conversations %}
+      <li>
+        <strong>{{ c.created_at }}</strong>: <em>{{ c.task }}</em>
+        <div>{{ c.response }}</div>
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
