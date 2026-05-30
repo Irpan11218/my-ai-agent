@@ -9,9 +9,12 @@
   </head>
   <body>
     <nav class="navbar navbar-dark bg-dark py-3">
-      <div class="container">
+      <div class="container d-flex justify-content-between align-items-center">
         <a class="navbar-brand logo" href="/">My AI Agent</a>
-        <span class="muted">Ringan • Lokal • Mudah</span>
+        <div class="d-flex gap-2 align-items-center">
+          <input id="tokenInput" class="form-control form-control-sm" style="width:220px" placeholder="API token (optional)" />
+          <button id="saveToken" class="btn btn-sm btn-outline-light">Simpan</button>
+        </div>
       </div>
     </nav>
 
@@ -66,16 +69,32 @@
         }
       }
 
+      document.getElementById('saveToken').addEventListener('click', (e)=>{
+        const t = document.getElementById('tokenInput').value.trim();
+        if(t) localStorage.setItem('agent_token', t); else localStorage.removeItem('agent_token');
+        alert('Token disimpan di browser.');
+      });
+
       document.getElementById('taskForm').addEventListener('submit', async (e)=>{
         e.preventDefault();
         const task = document.getElementById('task').value;
-        const res = await fetch('/api/run', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({task})});
+        const headers = {'Content-Type':'application/json'};
+        const token = localStorage.getItem('agent_token');
+        if(token) headers['Authorization'] = 'Bearer '+token;
+        const res = await fetch('/api/run', {method:'POST', headers, body: JSON.stringify({task})});
         const json = await res.json();
-        document.getElementById('result').textContent = json.result || JSON.stringify(json);
+        if(res.status === 401){
+          document.getElementById('result').textContent = 'Unauthorized — periksa token Anda.';
+        } else {
+          document.getElementById('result').textContent = json.result || JSON.stringify(json);
+        }
         document.getElementById('task').value='';
         loadRecent();
       });
 
+      // populate token input from localStorage
+      const saved = localStorage.getItem('agent_token');
+      if(saved) document.getElementById('tokenInput').value = saved;
       loadRecent();
     </script>
   </body>
