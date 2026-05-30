@@ -47,6 +47,15 @@ def conversations():
     return render_template("conversations.html", conversations=convs)
 
 
+@app.route("/api/conversations")
+def api_conversations():
+    rows = agent.list_conversations(limit=100)
+    convs = [
+        {"id": r[0], "task": r[1], "response": r[2], "created_at": r[3]} for r in rows
+    ]
+    return jsonify(convs)
+
+
 @app.route("/")
 def index():
     return render_template("index.html")
