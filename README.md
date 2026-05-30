@@ -1,5 +1,7 @@
 # my-ai-agent
 
+[![CI](https://github.com/Irpan11218/my-ai-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/Irpan11218/my-ai-agent/actions)
+
 Agent sederhana dengan CLI, API (Flask), dan penyimpanan SQLite.
 
 Quick start:
@@ -14,4 +16,3 @@ CLI:
 ```bash
 python3 cli.py --task "Halo"
 ```
-# my-ai-agent
