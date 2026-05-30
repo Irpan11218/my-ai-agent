@@ -1,6 +1,7 @@
 # my-ai-agent
 
 [![CI](https://github.com/Irpan11218/my-ai-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/Irpan11218/my-ai-agent/actions)
+[![Image CI](https://github.com/Irpan11218/my-ai-agent/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/Irpan11218/my-ai-agent/actions/workflows/docker-publish.yml)
 
 Agent sederhana dengan CLI, API (Flask), dan penyimpanan SQLite.
 
