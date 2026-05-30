@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/Irpan11218/my-ai-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/Irpan11218/my-ai-agent/actions)
 [![Image CI](https://github.com/Irpan11218/my-ai-agent/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/Irpan11218/my-ai-agent/actions/workflows/docker-publish.yml)
+[![Release](https://img.shields.io/github/v/release/Irpan11218/my-ai-agent)](https://github.com/Irpan11218/my-ai-agent/releases)
 
 Agent sederhana dengan CLI, API (Flask), dan penyimpanan SQLite.
 
