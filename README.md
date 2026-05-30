@@ -17,6 +17,24 @@ CLI:
 python3 cli.py --task "Halo"
 ```
 
+Docker (recommended)
+--------------------
+
+Build image and run with docker-compose:
+
+```bash
+docker compose build
+docker compose up -d
+```
+
+The web UI will be available at `http://localhost:5000` and the SQLite DB is persisted in the `data` volume.
+
+To stop and remove containers:
+
+```bash
+docker compose down
+```
+
 Environment variables:
 - `AGENT_API_TOKEN`: if set, API requires `Authorization: Bearer <token>` header.
 - `AGENT_WEBHOOK_URL`: if set, agent will POST task/result to this URL after running.

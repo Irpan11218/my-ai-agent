@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  agent:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - AGENT_API_TOKEN=${AGENT_API_TOKEN:-}
+      - AGENT_WEBHOOK_URL=${AGENT_WEBHOOK_URL:-}
+      - AGENT_DB=/data/agent.db
+      - AGENT_NAME=${AGENT_NAME:-WebAgent}
+    volumes:
+      - data:/data
+    restart: unless-stopped
+
+volumes:
+  data:
